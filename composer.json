@@ -1,0 +1,6 @@
+{
+    "require": {
+        "team-reflex/discord-php": "^5.1",
+        "doctrine/annotations": "^1.11"
+    }
+}
