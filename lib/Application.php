@@ -13,14 +13,14 @@ class Application
     public static function getInstance(): Application
     {
         if (!self::$instance) {
-            $discordToken = getenv('DISCORD_TOKEN');
-            if (!$discordToken) {
+            $ini = parse_ini_file('.env');
+            if (!isset($ini['DISCORD_TOKEN']) or !$ini['DISCORD_TOKEN']) {
                 throw new Exception('Token not found!');
             }
 
             self::$instance = new Application;
             self::$instance->discord = new Discord([
-                'token' => $discordToken
+                'token' => $ini['DISCORD_TOKEN']
             ]);
         }
 
