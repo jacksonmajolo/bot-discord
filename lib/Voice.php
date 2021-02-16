@@ -4,6 +4,7 @@ namespace Lib;
 
 use Discord\Discord;
 use Discord\Voice\VoiceClient;
+use React\Promise\Deferred;
 
 class Voice
 {

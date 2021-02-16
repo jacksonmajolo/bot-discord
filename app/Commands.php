@@ -5,8 +5,9 @@ namespace App;
 use Discord\Discord;
 use Discord\Parts\Channel\Message;
 use Discord\Parts\Guild\Invite;
-use Discord\Voice\VoiceClient;
 use Lib\Annotation\Command;
+use Lib\Text;
+use Lib\Voice;
 
 class Commands
 {
@@ -16,8 +17,7 @@ class Commands
      */
     public static function textPHP(Discord $discord, Message $message): void
     {
-        $channel = $discord->getChannel($message->channel_id);
-        $channel->sendMessage('PHP é mestre!');
+        Text::sendText($discord, $message->channel_id, 'PHP é mestre!');
     }
 
     /**
@@ -26,20 +26,13 @@ class Commands
      */
     public static function voiceCat(Discord $discord, Message $message): void
     {
-        $channel = NULL;
         foreach ($message->channel->guild->voice_states as $voiceState) {
             if ($voiceState->user_id === $message->author->id) {
-                $channel = $discord->getChannel($voiceState->channel_id);
+                $channel_id = $voiceState->channel_id;
             }
         }
 
-        if (!$channel) {
-            return;
-        }
-
-        $discord->joinVoiceChannel($channel)->then(function (VoiceClient $voiceChannel) {
-            $voiceChannel->playFile('assets/sounds/cat.mp3')->then([$voiceChannel, 'close']);
-        });
+        Voice::sendVoice($discord, $channel_id, 'assets/sounds/cat.mp3');
     }
 
     /**
@@ -54,8 +47,7 @@ class Commands
             'max_uses' => 5,
             'temporary' => TRUE
         ])->done(function (Invite $invite) use ($discord, $message) {
-            $channel = $discord->getChannel($message->channel_id);
-            $channel->sendMessage($invite->invite_url);
+            Text::sendText($discord, $message->channel_id, $invite->invite_url);
         });
     }
 }
