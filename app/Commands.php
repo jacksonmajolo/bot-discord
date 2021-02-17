@@ -35,10 +35,15 @@ class Commands
      */
     public static function voiceCat(Discord $discord, Message $message): void
     {
+        $channel_id = NULL;
         foreach ($message->channel->guild->voice_states as $voiceState) {
             if ($voiceState->user_id === $message->author->id) {
                 $channel_id = $voiceState->channel_id;
             }
+        }
+
+        if(!$channel_id) {
+            return;
         }
 
         Voice::sendVoice($discord, $channel_id, 'assets/sounds/cat.mp3');
