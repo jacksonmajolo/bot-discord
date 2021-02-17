@@ -21,6 +21,15 @@ class Commands
     }
 
     /**
+     * @Command(name="!cabo")
+     * @return void
+     */
+    public static function textCabo(Discord $discord, Message $message): void
+    {
+        Text::sendText($discord, $message->channel_id, 'https://imagizer.imageshack.com/img922/756/ijYNtC.png');
+    }
+
+    /**
      * @Command(name="!cat")
      * @return void
      */
