@@ -85,6 +85,6 @@ class Commands
             $commands[] = $methodAnnotation->getCommand();
         }
 
-        Text::sendText($discord, $message->channel_id, implode(PHP_EOL ,$commands);
+        Text::sendText($discord, $message->channel_id, implode(PHP_EOL ,$commands));
     }
 }
