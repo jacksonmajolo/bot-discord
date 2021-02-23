@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Doctrine\Common\Annotations\AnnotationReader;
 use Discord\Discord;
 use Discord\Parts\Channel\Message;
 use Discord\Parts\Guild\Invite;
@@ -63,5 +64,27 @@ class Commands
         ])->done(function (Invite $invite) use ($discord, $message) {
             Text::sendText($discord, $message->channel_id, $invite->invite_url);
         });
+    }
+
+    /**
+     * @Command(name="!ajuda")
+     * @return void
+     */
+    public static function textAjuda()
+    {
+        $reflectionClass = new ReflectionClass(Commands::class);
+        $annotationReader = new AnnotationReader();
+
+        $commands = [];
+        foreach ($reflectionClass->getMethods() as $reflectionMethod) {
+            $methodAnnotation = $annotationReader->getMethodAnnotation($reflectionMethod, Command::class);
+            if (!$methodAnnotation) {
+                continue;
+            }
+
+            $commands[] = $methodAnnotation->getCommand();
+        }
+
+        Text::sendText($discord, $message->channel_id, implode(PHP_EOL ,$commands);
     }
 }
