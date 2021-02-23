@@ -44,7 +44,7 @@ class Commands
             }
         }
 
-        if(!$channel_id) {
+        if (!$channel_id) {
             return;
         }
 
@@ -71,7 +71,7 @@ class Commands
      * @Command(name="!ajuda")
      * @return void
      */
-    public static function textAjuda()
+    public static function textAjuda(Discord $discord, Message $message): void
     {
         $reflectionClass = new ReflectionClass(Commands::class);
         $annotationReader = new AnnotationReader();
@@ -86,6 +86,6 @@ class Commands
             $commands[] = $methodAnnotation->getCommand();
         }
 
-        Text::sendText($discord, $message->channel_id, implode(PHP_EOL ,$commands));
+        Text::sendText($discord, $message->channel_id, implode(PHP_EOL, $commands));
     }
 }
