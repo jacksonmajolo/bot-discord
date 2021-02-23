@@ -37,13 +37,7 @@ class Commands
      */
     public static function voiceCat(Discord $discord, Message $message): void
     {
-        $channel_id = NULL;
-        foreach ($message->channel->guild->voice_states as $voiceState) {
-            if ($voiceState->user_id === $message->author->id) {
-                $channel_id = $voiceState->channel_id;
-            }
-        }
-
+        $channel_id = Voice::channelVoiceFromMessage($message);
         if (!$channel_id) {
             return;
         }
@@ -87,5 +81,47 @@ class Commands
         }
 
         Text::sendText($discord, $message->channel_id, implode(PHP_EOL, $commands));
+    }
+
+    /**
+     * @Command(name="!listen")
+     * @return void
+     */
+    public static function voiceListen(Discord $discord, Message $message): void
+    {
+        $channel_id = Voice::channelVoiceFromMessage($message);
+        if (!$channel_id) {
+            return;
+        }
+
+        Voice::sendVoice($discord, $channel_id, 'assets/sounds/hey_listen.mp3');
+    }
+
+    /**
+     * @Command(name="!alemoes")
+     * @return void
+     */
+    public static function voiceAlemoes(Discord $discord, Message $message): void
+    {
+        $channel_id = Voice::channelVoiceFromMessage($message);
+        if (!$channel_id) {
+            return;
+        }
+
+        Voice::sendVoice($discord, $channel_id, 'assets/sounds/alemoes.mp3');
+    }
+
+    /**
+     * @Command(name="!cooler")
+     * @return void
+     */
+    public static function voiceCooler(Discord $discord, Message $message): void
+    {
+        $channel_id = Voice::channelVoiceFromMessage($message);
+        if (!$channel_id) {
+            return;
+        }
+
+        Voice::sendVoice($discord, $channel_id, 'assets/sounds/cooler.mp3');
     }
 }
