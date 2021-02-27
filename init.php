@@ -1,6 +1,6 @@
 <?php
 
-$folders = ['lib/', 'app/'];
+$folders = ['lib/', 'app/', 'api/'];
 foreach ($folders as $folder) {
     foreach (new RecursiveIteratorIterator(
         new RecursiveDirectoryIterator($folder),

@@ -4,6 +4,7 @@ namespace Lib;
 
 use Discord\Discord;
 use Exception;
+use Monolog\Logger;
 
 class Application
 {
@@ -20,7 +21,9 @@ class Application
 
             self::$instance = new Application;
             self::$instance->discord = new Discord([
-                'token' => $ini['DISCORD_TOKEN']
+                'token' => $ini['DISCORD_TOKEN'],
+                'loggerLevel' => Logger::EMERGENCY,
+                'loadAllMembers' => TRUE,
             ]);
         }
 

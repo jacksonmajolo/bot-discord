@@ -20,9 +20,11 @@ class Voice
         return $channel_id;
     }
 
-    public static function sendVoice(Discord $discord, int $channel_id, string $pathFile): void
+    public static function sendVoice(Discord $discord, Message $message, string $pathFile): void
     {
-        $channel = $discord->getChannel($channel_id);
+        $channel_id = Voice::channelVoiceFromMessage($message);
+
+        $channel = $channel_id ? $discord->getChannel($channel_id) : NULL;
         if (empty($channel)) {
             return;
         }

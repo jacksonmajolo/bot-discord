@@ -23,11 +23,16 @@ try {
     }
 
     $application = Application::getInstance();
+
     $application->discord->on('ready', function ($discord) use ($commands) {
         $discord->on('message', function ($message, $discord) use ($commands) {
             $method = (isset($message['content']) and isset($commands[$message['content']]) and $commands[$message['content']]) ? $commands[$message['content']] : NULL;
             if ($method and method_exists(Commands::class, $method)) {
-                Commands::$method($discord, $message);
+                try {
+                    Commands::$method($discord, $message);
+                } catch (Exception $e) {
+                    echo $e->getMessage() . PHP_EOL;
+                }
             }
         });
     }, function ($e) {
