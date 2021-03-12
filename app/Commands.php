@@ -9,7 +9,6 @@ use Discord\Parts\Channel\Message;
 use Discord\Parts\Guild\Invite;
 use Lib\Annotation\Command;
 use Lib\Text;
-use Lib\Util\RestClient;
 use Lib\Voice;
 use Api\Promobit;
 use ReflectionClass;
@@ -17,7 +16,7 @@ use ReflectionClass;
 class Commands
 {
     /**
-     * @Command(name="!php")
+     * @Command(name="php")
      * @return void
      */
     public static function textPHP(Discord $discord, Message $message): void
@@ -26,7 +25,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!cabo")
+     * @Command(name="cabo")
      * @return void
      */
     public static function textCabo(Discord $discord, Message $message): void
@@ -35,7 +34,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!cat")
+     * @Command(name="cat")
      * @return void
      */
     public static function voiceCat(Discord $discord, Message $message): void
@@ -44,7 +43,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!invite")
+     * @Command(name="invite")
      * @return void
      */
     public static function textInvite(Discord $discord, Message $message): void
@@ -60,7 +59,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!ajuda")
+     * @Command(name="ajuda")
      * @return void
      */
     public static function textAjuda(Discord $discord, Message $message): void
@@ -82,7 +81,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!listen")
+     * @Command(name="listen")
      * @return void
      */
     public static function voiceListen(Discord $discord, Message $message): void
@@ -91,7 +90,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!alemoes")
+     * @Command(name="alemoes")
      * @return void
      */
     public static function voiceAlemoes(Discord $discord, Message $message): void
@@ -100,7 +99,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!cooler")
+     * @Command(name="cooler")
      * @return void
      */
     public static function voiceCooler(Discord $discord, Message $message): void
@@ -109,7 +108,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!piada")
+     * @Command(name="piada")
      * @return void
      */
     public static function textPiada(Discord $discord, Message $message): void
@@ -118,7 +117,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!cris")
+     * @Command(name="cris")
      * @return void
      */
     public static function textCris(Discord $discord, Message $message): void
@@ -132,7 +131,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!desempregado")
+     * @Command(name="desempregado")
      * @return void
      */
     public static function textDesempregado(Discord $discord, Message $message): void
@@ -141,7 +140,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!moedas")
+     * @Command(name="moedas")
      * @return void
      */
     public static function textMoedas(Discord $discord, Message $message): void
@@ -161,7 +160,7 @@ class Commands
     }
 
     /**
-     * @Command(name="!promo")
+     * @Command(name="promo")
      * @return void
      */
     public static function textPromo(Discord $discord, Message $message): void
