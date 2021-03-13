@@ -2,9 +2,8 @@
 
 namespace Lib;
 
-use Discord\Discord;
+use Discord\DiscordCommandClient;
 use Exception;
-use Monolog\Logger;
 
 class Application
 {
@@ -20,10 +19,9 @@ class Application
             }
 
             self::$instance = new Application;
-            self::$instance->discord = new Discord([
+            self::$instance->discord = new DiscordCommandClient([
                 'token' => $discordToken,
-                'loggerLevel' => Logger::EMERGENCY,
-                'loadAllMembers' => TRUE,
+                'prefix' => '!',
             ]);
         }
 
