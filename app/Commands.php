@@ -33,6 +33,16 @@ class Commands
         Text::sendText($discord, $message->channel_id, 'https://imagizer.imageshack.com/img922/756/ijYNtC.png');
     }
 
+     /**
+     * @Command(name="farm")
+     * @return void
+     */
+    public static function textPiada(Discord $discord, Message $message): void
+    {
+        Text::sendText($discord, $message->channel_id, 'https://i.imgur.com/xPWOKWW.png');
+    }
+
+
     /**
      * @Command(name="cat")
      * @return void
