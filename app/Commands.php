@@ -37,7 +37,7 @@ class Commands
      * @Command(name="farm")
      * @return void
      */
-    public static function textPiada(Discord $discord, Message $message): void
+    public static function textFarm(Discord $discord, Message $message): void
     {
         Text::sendText($discord, $message->channel_id, 'https://i.imgur.com/xPWOKWW.png');
     }
