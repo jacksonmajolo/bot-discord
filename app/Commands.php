@@ -39,7 +39,7 @@ class Commands
      */
     public static function textFarm(Discord $discord, Message $message): void
     {
-        Text::sendText($discord, $message->channel_id, 'https://i.imgur.com/xPWOKWW.png');
+        Text::sendText($discord, $message->channel_id, 'https://cdn.discordapp.com/attachments/591018714758119435/829188392192573490/crime.PNG');
     }
 
 
