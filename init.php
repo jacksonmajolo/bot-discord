@@ -1,5 +1,7 @@
 <?php
 
+use Dotenv\Dotenv;
+
 $folders = ['lib/', 'app/', 'api/'];
 foreach ($folders as $folder) {
     foreach (new RecursiveIteratorIterator(
@@ -16,3 +18,6 @@ foreach ($folders as $folder) {
 
 $loader = require 'vendor/autoload.php';
 $loader->register();
+
+$dotenv = Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->load();

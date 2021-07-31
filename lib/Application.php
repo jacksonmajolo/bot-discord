@@ -15,13 +15,15 @@ class Application
         if (!self::$instance) {
             $discordToken = getenv('DISCORD_TOKEN');
             if (!$discordToken) {
-                throw new Exception('Token not found!');
+                throw new Exception('Discord Token not found!');
             }
+
+            $commandPrefix = getenv('COMMAND_PREFIX');
 
             self::$instance = new Application;
             self::$instance->discord = new DiscordCommandClient([
                 'token' => $discordToken,
-                'prefix' => '!',
+                'prefix' => ($commandPrefix ? $commandPrefix : '!'),
             ]);
         }
 
