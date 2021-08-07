@@ -5,6 +5,5 @@ RUN apt-get update && \
     opus-tools \
     libopus-dev \
     libsodium-dev
-COPY . /usr/src/bot-discord
-WORKDIR /usr/src/bot-discord
+WORKDIR /var/www/bot-discord
 CMD [ "php", "./server.php" ]

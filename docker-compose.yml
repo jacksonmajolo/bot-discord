@@ -1,0 +1,15 @@
+version: '3'
+services:
+    php:
+        build:
+            dockerfile: ./docker/php.dockerfile
+            context: .
+        image: php/bot-discord
+        container_name: botdiscord
+        networks: 
+            - local
+        volumes:
+            - ./:/var/www/bot-discord
+networks: 
+    local:
+        driver: bridge
