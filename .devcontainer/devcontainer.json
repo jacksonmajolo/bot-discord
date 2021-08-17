@@ -1,0 +1,12 @@
+{
+    "name": "bot-discord",
+    "context": "..",
+    "dockerFile": "../.docker/php.dockerfile",
+    "extensions": [
+        "irongeek.vscode-env",
+        "felixfbecker.php-debug",
+        "neilbrayfield.php-docblocker",
+        "bmewburn.vscode-intelephense-client",
+        "editorconfig.editorconfig"
+    ]
+}
