@@ -2,7 +2,7 @@ version: '3.3'
 services:
     php:
         build:
-            dockerfile: ./docker/php.dockerfile
+            dockerfile: ./.docker/php.dockerfile
             context: .
         image: bot-discord
         container_name: bot-discord
