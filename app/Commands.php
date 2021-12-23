@@ -33,7 +33,7 @@ class Commands
         Text::sendText($discord, $message->channel_id, 'https://imagizer.imageshack.com/img922/756/ijYNtC.png');
     }
 
-     /**
+    /**
      * @Command(name="farm")
      * @return void
      */
@@ -109,6 +109,15 @@ class Commands
     }
 
     /**
+     * @Command(name="vida")
+     * @return void
+     */
+    public static function voiceVida(Discord $discord, Message $message): void
+    {
+        Voice::sendVoice($discord, $message, 'assets/sounds/vida.mp3');
+    }
+
+    /**
      * @Command(name="cooler")
      * @return void
      */
@@ -133,7 +142,7 @@ class Commands
     public static function textCris(Discord $discord, Message $message): void
     {
         $text = 'Cristiano ';
-        for ($i = 0; $i < mt_rand(1, 20); $i++) {
+        for ($i = 0; $i < mt_rand(1, 10); $i++) {
             $text .= ':monkey:';
         }
 
