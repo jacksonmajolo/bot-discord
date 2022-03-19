@@ -1,7 +1,7 @@
 {
     "require": {
-        "team-reflex/discord-php": "^5.1",
-        "doctrine/annotations": "^1.11",
-        "vlucas/phpdotenv": "^5.3"
+        "team-reflex/discord-php": "^7.0.5",
+        "doctrine/annotations": "^1.13.2",
+        "vlucas/phpdotenv": "^5.4.1"
     }
 }
