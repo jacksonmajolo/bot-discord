@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  bot-discord:
+    privileged: true
+    build:
+      dockerfile: app.dockerfile
+      context: .
+    container_name: bot-discord
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ../../:/var/www/bot-discord
+      - ./config/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./config/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+    networks:
+      - bot-discord
+
+networks:
+  bot-discord:
+    driver: bridge
