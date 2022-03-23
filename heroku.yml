@@ -1,0 +1,5 @@
+build:
+  docker:
+    web: .devcontainer/docker/app.dockerfile
+run:
+  web: php server.php
