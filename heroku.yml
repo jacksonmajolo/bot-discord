@@ -2,4 +2,4 @@ build:
   docker:
     web: app.dockerfile
 run:
-  web: php server.php
+  web: composer install -n & php server.php
