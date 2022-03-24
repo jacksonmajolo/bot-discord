@@ -1,6 +1,6 @@
 FROM php:8.0-cli
 
-COPY ../. /var/www/bot-discord
+COPY . /var/www/bot-discord
 WORKDIR /var/www/bot-discord
 
 # system requirements

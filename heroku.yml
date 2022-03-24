@@ -1,5 +1,5 @@
 build:
   docker:
-    web: .heroku/app.dockerfile
+    web: app.dockerfile
 run:
   web: php server.php
