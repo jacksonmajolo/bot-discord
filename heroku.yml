@@ -1,5 +1,3 @@
 build:
   docker:
     web: app.dockerfile
-run:
-  web: sudo /usr/bin/php server.php
