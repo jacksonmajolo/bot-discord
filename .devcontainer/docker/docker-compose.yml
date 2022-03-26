@@ -4,7 +4,7 @@ services:
   bot-discord:
     privileged: true
     build:
-      dockerfile: app.dockerfile
+      dockerfile: app-dev.dockerfile
       context: .
     container_name: bot-discord
     restart: unless-stopped
