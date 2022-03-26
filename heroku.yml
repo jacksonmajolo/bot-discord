@@ -2,4 +2,4 @@ build:
   docker:
     web: app.dockerfile
 run:
-  web: php server.php
+  web: sudo /usr/bin/php server.php
