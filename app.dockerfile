@@ -18,5 +18,4 @@ RUN apt-get install -y php-soap php-xml php-curl php-gd php-mbstring
 
 # composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# ENTRYPOINT ["/usr/local/bin", "composer install -n"]
+RUN composer install -n
