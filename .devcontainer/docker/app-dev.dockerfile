@@ -1,15 +1,20 @@
-FROM php:8.0-cli
+FROM ubuntu:22.04
+
+ENV TIMEZONE America/Sao_Paulo
+ENV DEBIAN_FRONTEND="noninteractive"
 
 # system requirements
 RUN apt-get update
 RUN apt install -y vim zip unzip ffmpeg opus-tools libopus-dev libsodium-dev
 
-# xdebug PHP
-RUN pecl install xdebug
-RUN docker-php-ext-enable xdebug
+# install php
+RUN apt-get install -y php
+
+# Install php extensions
+RUN apt-get install -y php-soap php-xml php-curl php-gd php-mbstring php-xdebug
 
 # composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 EXPOSE 9003
 WORKDIR /var/www/bot-discord

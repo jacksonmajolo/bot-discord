@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   bot-discord:
@@ -11,8 +11,7 @@ services:
     tty: true
     volumes:
       - ../../:/var/www/bot-discord
-      - ./config/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-      - ./config/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+      - ./config/20-xdebug.ini:/etc/php/8.1/cli/conf.d/20-xdebug.ini
     networks:
       - bot-discord
 
