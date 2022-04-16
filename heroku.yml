@@ -1,5 +1,5 @@
 build:
   docker:
-    web: app.dockerfile
+    worker: app.dockerfile
 run:
-  web: php server.php
+  worker: php server.php
