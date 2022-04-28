@@ -3,6 +3,7 @@
 namespace Lib;
 
 use Discord\DiscordCommandClient;
+use Discord\WebSockets\Intents;
 use Exception;
 
 class Application
@@ -24,6 +25,10 @@ class Application
             self::$instance->discord = new DiscordCommandClient([
                 'token' => $discordToken,
                 'prefix' => ($commandPrefix ? $commandPrefix : '!'),
+                'discordOptions' => [
+                    'intents' => Intents::getAllIntents(),
+                    'loadAllMembers' => TRUE
+                ],
             ]);
         }
 
