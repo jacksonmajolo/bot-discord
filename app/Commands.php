@@ -133,12 +133,12 @@ class Commands
     }
 
     /**
-     * @Command(name="cris")
+     * @Command(name="monkey")
      * @return void
      */
-    public static function textCris(Discord $discord, Message $message): void
+    public static function textMonkey(Discord $discord, Message $message): void
     {
-        $text = 'Cristiano ';
+        $text = "{$message->author->username}: ";
         for ($i = 0; $i < mt_rand(1, 10); $i++) {
             $text .= ':monkey:';
         }
