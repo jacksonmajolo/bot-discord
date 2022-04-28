@@ -1,8 +1,6 @@
 <?php
 
-use Dotenv\Dotenv;
-
-$folders = ['lib/', 'app/', 'api/'];
+$folders = ['lib/', 'app/'];
 foreach ($folders as $folder) {
     foreach (new RecursiveIteratorIterator(
         new RecursiveDirectoryIterator($folder),

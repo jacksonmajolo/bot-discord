@@ -2,15 +2,13 @@
 
 namespace App;
 
-use Api\EconomiaAwesome;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Discord\Discord;
 use Discord\Parts\Channel\Message;
-use Discord\Parts\Guild\Invite;
+use Discord\Parts\Channel\Invite;
 use Lib\Annotation\Command;
 use Lib\Text;
 use Lib\Voice;
-use Api\Promobit;
 use ReflectionClass;
 
 class Commands
@@ -74,12 +72,11 @@ class Commands
      */
     public static function textAjuda(Discord $discord, Message $message): void
     {
-        $reflectionClass = new ReflectionClass(Commands::class);
-        $annotationReader = new AnnotationReader();
-
         $commands = [];
+
+        $reflectionClass = new ReflectionClass(Commands::class);
         foreach ($reflectionClass->getMethods() as $reflectionMethod) {
-            $methodAnnotation = $annotationReader->getMethodAnnotation($reflectionMethod, Command::class);
+            $methodAnnotation = (new AnnotationReader())->getMethodAnnotation($reflectionMethod, Command::class);
             if (!$methodAnnotation) {
                 continue;
             }
@@ -156,49 +153,5 @@ class Commands
     public static function textDesempregado(Discord $discord, Message $message): void
     {
         Text::sendText($discord, $message->channel_id, 'https://www.linkedin.com/in/cristiano-bonassina/');
-    }
-
-    /**
-     * @Command(name="moedas")
-     * @return void
-     */
-    public static function textMoedas(Discord $discord, Message $message): void
-    {
-        $moedas = EconomiaAwesome::all();
-        if (!$moedas) {
-            return;
-        }
-
-        $results = [];
-        foreach ($moedas as $moeda) {
-            $results[str_replace('.', '', $moeda['high'])] = "{$moeda['name']}: R$ " . number_format($moeda['high'], 2, ',', '.');
-        }
-
-        krsort($results);
-        Text::sendText($discord, $message->channel_id, implode(PHP_EOL, $results));
-    }
-
-    /**
-     * @Command(name="promo")
-     * @return void
-     */
-    public static function textPromo(Discord $discord, Message $message): void
-    {
-        $limit = 5;
-
-        $promos = Promobit::list(['page' => 1]);
-        if (!isset($promos['offers']) or !$promos['offers']) {
-            return;
-        }
-
-        $count = 0;
-        foreach ($promos['offers'] as $offer) {
-            if ($count >= $limit) {
-                break;
-            }
-
-            Text::sendText($discord, $message->channel_id, Promobit::URL . $offer['offer_url'] . PHP_EOL);
-            $count++;
-        }
     }
 }
