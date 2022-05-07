@@ -22,6 +22,11 @@ try {
 
         $command = $reflectionMethod->name;
         $application->discord->registerCommand($methodAnnotation->getCommand(), function (Message $message) use ($application, $command) {
+            $logger = $application->discord->getLogger();
+            if ($logger) {
+                $logger->info("{$message->member->username}: {$message->content}");
+            }
+
             Commands::$command($application->discord, $message);
         });
     }

@@ -8,49 +8,44 @@ use Discord\Voice\VoiceClient;
 
 class Voice
 {
-    private static function userChannelVoiceByMessage(Discord $discord, Message $message): ?int
+    private static function userChannelVoiceByMessage(Message $message): ?int
     {
-        $guilds = $discord->guilds;
-        if (!$guilds) {
+        $channels = $message->member->guild->channels;
+        if (!$channels) {
             return NULL;
         }
 
-        foreach ($guilds as $guild) {
-            if ($message->channel->guild_id != $guild->id) {
+        foreach ($channels as $channel) {
+            $members = $channel->members;
+            if (!$members) {
                 continue;
             }
 
-            $channels = $guild->channels;
-            if (!$channels) {
-                continue;
-            }
-
-            foreach ($channels as $channel) {
-                $members = $channel->members;
-                if (!$members) {
+            foreach ($members as $member) {
+                if ($message->author->id != $member->user_id) {
                     continue;
                 }
 
-                foreach ($members as $member) {
-                    if ($message->author->id != $member->user_id) {
-                        continue;
-                    }
-
-                    return $channel->id;
-                }
+                return $channel->id;
             }
         }
+
 
         return NULL;
     }
 
     public static function sendVoiceByMessage(Discord $discord, Message $message, string $pathFile): void
     {
-        $channel_id = Voice::userChannelVoiceByMessage($discord, $message);
+        $channel_id = Voice::userChannelVoiceByMessage($message);
         if (!$channel_id) {
             return;
         }
 
+        self::sendVoiceFromChannelId($discord, $channel_id, $pathFile);
+    }
+
+    public static function sendVoiceFromChannelId(Discord $discord, int $channel_id, string $pathFile): void
+    {
         $channel = $discord->getChannel($channel_id);
         if (empty($channel)) {
             return;
