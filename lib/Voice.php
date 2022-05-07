@@ -8,23 +8,50 @@ use Discord\Voice\VoiceClient;
 
 class Voice
 {
-    public static function channelVoiceFromMessage(Message $message): ?int
+    private static function userChannelVoiceByMessage(Discord $discord, Message $message): ?int
     {
-        $channel_id = NULL;
-        foreach ($message->channel->guild->voice_states as $voiceState) {
-            if ($voiceState->user_id === $message->author->id) {
-                $channel_id = $voiceState->channel_id;
+        $guilds = $discord->guilds;
+        if (!$guilds) {
+            return NULL;
+        }
+
+        foreach ($guilds as $guild) {
+            if ($message->channel->guild_id != $guild->id) {
+                continue;
+            }
+
+            $channels = $guild->channels;
+            if (!$channels) {
+                continue;
+            }
+
+            foreach ($channels as $channel) {
+                $members = $channel->members;
+                if (!$members) {
+                    continue;
+                }
+
+                foreach ($members as $member) {
+                    if ($message->author->id != $member->user_id) {
+                        continue;
+                    }
+
+                    return $channel->id;
+                }
             }
         }
 
-        return $channel_id;
+        return NULL;
     }
 
-    public static function sendVoice(Discord $discord, Message $message, string $pathFile): void
+    public static function sendVoiceByMessage(Discord $discord, Message $message, string $pathFile): void
     {
-        $channel_id = Voice::channelVoiceFromMessage($message);
+        $channel_id = Voice::userChannelVoiceByMessage($discord, $message);
+        if (!$channel_id) {
+            return;
+        }
 
-        $channel = $channel_id ? $discord->getChannel($channel_id) : NULL;
+        $channel = $discord->getChannel($channel_id);
         if (empty($channel)) {
             return;
         }

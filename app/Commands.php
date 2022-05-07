@@ -47,7 +47,7 @@ class Commands
      */
     public static function voiceCat(Discord $discord, Message $message): void
     {
-        Voice::sendVoice($discord, $message, 'assets/sounds/cat.mp3');
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/cat.mp3');
     }
 
     /**
@@ -93,7 +93,7 @@ class Commands
      */
     public static function voiceListen(Discord $discord, Message $message): void
     {
-        Voice::sendVoice($discord, $message, 'assets/sounds/hey_listen.mp3');
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/hey_listen.mp3');
     }
 
     /**
@@ -102,7 +102,7 @@ class Commands
      */
     public static function voiceAlemoes(Discord $discord, Message $message): void
     {
-        Voice::sendVoice($discord, $message, 'assets/sounds/alemoes.mp3');
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/alemoes.mp3');
     }
 
     /**
@@ -111,7 +111,7 @@ class Commands
      */
     public static function voiceVida(Discord $discord, Message $message): void
     {
-        Voice::sendVoice($discord, $message, 'assets/sounds/vida.mp3');
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/vida.mp3');
     }
 
     /**
@@ -120,7 +120,7 @@ class Commands
      */
     public static function voiceCooler(Discord $discord, Message $message): void
     {
-        Voice::sendVoice($discord, $message, 'assets/sounds/cooler.mp3');
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/cooler.mp3');
     }
 
     /**
