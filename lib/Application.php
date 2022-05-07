@@ -24,11 +24,7 @@ class Application
             self::$instance = new Application;
             self::$instance->discord = new DiscordCommandClient([
                 'token' => $discordToken,
-                'prefix' => ($commandPrefix ? $commandPrefix : '!'),
-                'discordOptions' => [
-                    'intents' => Intents::getAllIntents(),
-                    'loadAllMembers' => TRUE
-                ],
+                'prefix' => ($commandPrefix ? $commandPrefix : '!')
             ]);
         }
 
