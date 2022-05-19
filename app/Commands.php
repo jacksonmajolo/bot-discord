@@ -40,6 +40,14 @@ class Commands
         Text::sendText($discord, $message->channel_id, 'https://cdn.discordapp.com/attachments/591018714758119435/829188392192573490/crime.PNG');
     }
 
+    /**
+     * @Command(name="galo")
+     * @return void
+     */
+    public static function voiceCat(Discord $discord, Message $message): void
+    {
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/galo.mp3');
+    }
 
     /**
      * @Command(name="cat")
