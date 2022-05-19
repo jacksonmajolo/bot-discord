@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 
 # system requirements
 RUN apt-get update
-RUN apt install -y vim zip unzip ffmpeg opus-tools libopus-dev libsodium-dev
+RUN apt install -y vim zip unzip ffmpeg opus-tools libopus-dev libsodium-dev git
 
 # install php
 RUN apt-get install -y php

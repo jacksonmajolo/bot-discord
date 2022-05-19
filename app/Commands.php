@@ -53,7 +53,7 @@ class Commands
      * @Command(name="cat")
      * @return void
      */
-    public static function voiceCat(Discord $discord, Message $message): void
+    public static function voiceGalo(Discord $discord, Message $message): void
     {
         Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/cat.mp3');
     }
