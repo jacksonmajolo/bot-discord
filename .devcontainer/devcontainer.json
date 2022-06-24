@@ -12,6 +12,6 @@
         "neilbrayfield.php-docblocker",
         "bmewburn.vscode-intelephense-client",
         "zobo.php-intellisense",
-        "xdebug.php-debug",
+        "xdebug.php-debug"
     ]
 }

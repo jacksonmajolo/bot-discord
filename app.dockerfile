@@ -1,5 +1,6 @@
 FROM ubuntu:22.04
 
+ENV LAST_UPDATED 2022-06-22
 ENV TIMEZONE America/Sao_Paulo
 ENV DEBIAN_FRONTEND="noninteractive"
 

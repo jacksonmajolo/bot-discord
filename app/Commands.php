@@ -50,6 +50,42 @@ class Commands
     }
 
     /**
+     * @Command(name="cavalo")
+     * @return void
+     */
+    public static function voiceCavalo(Discord $discord, Message $message): void
+    {
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/cavalo.mp3');
+    }
+
+    /**
+     * @Command(name="demais")
+     * @return void
+     */
+    public static function voiceDemais(Discord $discord, Message $message): void
+    {
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/demais.mp3');
+    }
+
+    /**
+     * @Command(name="elegosta")
+     * @return void
+     */
+    public static function voiceEleGosta(Discord $discord, Message $message): void
+    {
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/elegosta.mp3');
+    }
+
+    /**
+     * @Command(name="ui")
+     * @return void
+     */
+    public static function voiceUi(Discord $discord, Message $message): void
+    {
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/ui.mp3');
+    }
+
+    /**
      * @Command(name="cat")
      * @return void
      */
