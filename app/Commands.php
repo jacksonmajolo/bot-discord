@@ -159,6 +159,15 @@ class Commands
     }
 
     /**
+     * @Command(name="meiodia")
+     * @return void
+     */
+    public static function voiceMeioDia(Discord $discord, Message $message): void
+    {
+        Voice::sendVoiceByMessage($discord, $message, 'assets/sounds/meiodia.mp3');
+    }
+
+    /**
      * @Command(name="cooler")
      * @return void
      */
